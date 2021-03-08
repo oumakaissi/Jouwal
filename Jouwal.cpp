@@ -1,7 +1,7 @@
 
 // Jouwal.cpp : Defines the class behaviors for the application.
 //
-
+#include "stdafx.h"
 #include "pch.h"
 #include "framework.h"
 #include "Jouwal.h"
@@ -27,6 +27,7 @@ CJouwalApp::CJouwalApp()
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 
 	// TODO: add construction code here,
+	DbConnector::createDb();
 	// Place all significant initialization in InitInstance
 }
 
@@ -60,7 +61,7 @@ BOOL CJouwalApp::InitInstance()
 	CShellManager *pShellManager = new CShellManager;
 
 	// Activate "Windows Native" visual manager for enabling themes in MFC controls
-	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
+	//CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
 	// Standard initialization
 	// If you are not using these features and wish to reduce the size
@@ -96,9 +97,9 @@ BOOL CJouwalApp::InitInstance()
 		delete pShellManager;
 	}
 
-#if !defined(_AFXDLL) && !defined(_AFX_NO_MFC_CONTROLS_IN_DIALOGS)
-	ControlBarCleanUp();
-#endif
+//#if !defined(_AFXDLL) && !defined(_AFX_NO_MFC_CONTROLS_IN_DIALOGS)
+	//ControlBarCleanUp();
+//#endif
 
 	// Since the dialog has been closed, return FALSE so that we exit the
 	//  application, rather than start the application's message pump.

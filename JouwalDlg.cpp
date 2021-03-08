@@ -1,4 +1,6 @@
-
+/*
+*Author: Taha Bouhsine
+*/
 // JouwalDlg.cpp : implementation file
 //
 
@@ -7,12 +9,13 @@
 #include "Jouwal.h"
 #include "JouwalDlg.h"
 #include "afxdialogex.h"
+#include "afxbutton.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-
+using namespace std;
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -40,18 +43,25 @@ CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+
 END_MESSAGE_MAP()
+//End of ABOUT Dialog
+//##################################
 
 
+
+//##################################
+//Start of Jouwal dialog
 // CJouwalDlg dialog
 
 
 
 CJouwalDlg::CJouwalDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_JOUWAL_DIALOG, pParent)
+	: CDialogEx(IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,12 +69,25 @@ CJouwalDlg::CJouwalDlg(CWnd* pParent /*=nullptr*/)
 void CJouwalDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	//DDX_Control(pDX, IDC_QUIT, quitButton);
+
+//	DDX_Control(pDX, IDC_DRAWER, drawerRect);
 }
 
 BEGIN_MESSAGE_MAP(CJouwalDlg, CDialogEx)
+	ON_WM_ERASEBKGND()
+
+
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+//	ON_BN_CLICKED(IDC_HOME, &CJouwalDlg::OnBnClickedHome)
+	//ON_BN_CLICKED(IDC_Activities, &CJouwalDlg::OnBnClickedActivities)
+	//ON_BN_CLICKED(IDC_VILLAGES, &CJouwalDlg::OnBnClickedVillages)
+	//ON_BN_CLICKED(IDC_COUNTRIES, &CJouwalDlg::OnBnClickedCountries)
+	//ON_BN_CLICKED(IDC_CONTINENTS, &CJouwalDlg::OnBnClickedContinents)
+	//ON_BN_CLICKED(IDC_SETTINGS, &CJouwalDlg::OnBnClickedSettings)
+	//ON_BN_CLICKED(IDC_QUIT, &CJouwalDlg::OnBnClickedQuit)
 END_MESSAGE_MAP()
 
 
@@ -73,7 +96,15 @@ END_MESSAGE_MAP()
 BOOL CJouwalDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	CDialogEx::CenterWindow();
+	GetDlgItem(IDC_VIEWCONTROL)->GetWindowRect(rc);
+	GetDlgItem(IDC_DRAWER)->GetWindowRect(drawerRect);
 
+	drawerView = new DrawerView(this);
+	activitiesView = new ActivitiesView(this);
+	ScreenToClient(&rc);
+	ScreenToClient(&drawerRect);
+	//CenterWindow();
 	// Add "About..." menu item to system menu.
 
 	// IDM_ABOUTBOX must be in the system command range.
@@ -98,12 +129,18 @@ BOOL CJouwalDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-
-	ShowWindow(SW_MAXIMIZE);
-
+	
 	ShowWindow(SW_MINIMIZE);
 
+	// setting up the view controller
+	
+	activitiesView->MoveWindow(rc);
+	drawerView->MoveWindow(drawerRect);
+
 	// TODO: Add extra initialization here
+//	GetDlgItem(IDC_VIEWCONTROLLER)->GetWindowRect(rc);
+//	quitButton.SetFaceColor(RGB(80, 40, 80),true);
+	//quitButton.SetTextColor(RGB(255, 255, 255));
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -156,4 +193,22 @@ HCURSOR CJouwalDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+
+
+BOOL CJouwalDlg::OnEraseBkgnd(CDC* pDC)
+{
+	CRect rect;
+	GetClientRect(&rect);
+	CBrush myBrush(RGB(77, 13, 48));    // dialog background color
+	CBrush* pOld = pDC->SelectObject(&myBrush);
+	BOOL bRes = pDC->PatBlt(0, 0, rect.Width(), rect.Height(), PATCOPY);
+	pDC->SelectObject(pOld);    // restore old brush
+	return bRes;                       // CDialog::OnEraseBkgnd(pDC);
+}
+
+
+
+/// <summary>
+/// Buttons Event handlers
+/// </summary>
 
