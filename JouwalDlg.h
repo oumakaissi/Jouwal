@@ -5,7 +5,11 @@
 #pragma once
 #include "ActivitiesView.h"
 #include "DrawerView.h"
+#include "HomeView.h"
 
+#ifdef UWM_CUSTOM
+#define UWM_CUSTOM (WM_APP+1)
+#endif
 
 // CJouwalDlg dialog
 class CJouwalDlg : public CDialogEx
@@ -36,9 +40,15 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	void OnBnClickedQuit();
+	void OnBnClickedActivities();
+	LRESULT OnCustom(WPARAM wparam, LPARAM lparam);
+	void OnBnClickedHome();
+
+	void destroyAllChilds();
+	
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedHome();
 	// Views
 	//## This is responsable for changing the views
 	CRect rc;
@@ -46,8 +56,9 @@ public:
 	CRect drawerRect;
 
 	// ## Different Views of the application
-	ActivitiesView *activitiesView;
 	DrawerView* drawerView;
+	HomeView* homeView;
+	ActivitiesView* activitiesView;
 	// Components
 
 	// Buttons

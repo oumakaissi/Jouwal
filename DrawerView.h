@@ -23,4 +23,18 @@ protected:
 	BOOL OnEraseBkgnd(CDC* pDC);
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CMFCButton homeButton;
+	CMFCButton activitesButton;
+	CMFCButton villagesButton;
+	CMFCButton countriesButton;
+	CMFCButton continentsButton;
+	CMFCButton languagesButton;
+	CMFCButton settingsButton;
+	CMFCButton quitButton;
+	CRect rc;
+
+	afx_msg void OnBnClickedQuit();
+	afx_msg void OnBnClickedHome();
+	afx_msg void OnBnClickedActivities();
 };

@@ -19,7 +19,12 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
+	BOOL OnEraseBkgnd(CDC* pDC);
+
 	DECLARE_MESSAGE_MAP()
 public:
 
+	afx_msg void OnBnClickedActivityCreate();
+	afx_msg void OnBnClickedActivityCancel();
+	CString designationField;
 };

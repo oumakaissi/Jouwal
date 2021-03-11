@@ -25,6 +25,10 @@
 #define IDD_ACTIVITIES_DELETE_DIALOG    152
 #define IDD_FORMVIEW                    153
 #define IDD_DRAWER_VIEW                 153
+#define IDB_BITMAP3                     161
+#define IDI_ICON3                       162
+#define IDI_ICON4                       163
+#define IDI_ICON5                       164
 #define IDC_BUTTON2                     1009
 #define IDC_BUTTON3                     1010
 #define IDC_Activities                  1012
@@ -68,14 +72,15 @@
 #define IDC_STATIC_TEXT_ACTIVITY_VILLAGE_NUMBER 1045
 #define IDC_STATIC_ACTIVITY_NUMBER      1046
 #define IDC_DRAWER                      1048
+#define IDC_HOME_WELCOM_IMAGE           1049
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        160
+#define _APS_NEXT_RESOURCE_VALUE        165
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1049
+#define _APS_NEXT_CONTROL_VALUE         1050
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

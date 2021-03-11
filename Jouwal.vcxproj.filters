@@ -45,6 +45,9 @@
     <ClInclude Include="DrawerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HomeView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jouwal.cpp">
@@ -66,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DrawerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,6 +147,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\Documents\Adobe\Photoshop Docs\bg.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Downloads\bg-1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Downloads\go_home_icon_181144.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\favicon.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -15,6 +15,8 @@
 #define new DEBUG_NEW
 #endif
 
+
+#define UWM_CUSTOM (WM_APP+1)
 using namespace std;
 // CAboutDlg dialog used for App About
 
@@ -77,17 +79,10 @@ void CJouwalDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CJouwalDlg, CDialogEx)
 	ON_WM_ERASEBKGND()
 
-
+	ON_MESSAGE(UWM_CUSTOM, OnCustom)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-//	ON_BN_CLICKED(IDC_HOME, &CJouwalDlg::OnBnClickedHome)
-	//ON_BN_CLICKED(IDC_Activities, &CJouwalDlg::OnBnClickedActivities)
-	//ON_BN_CLICKED(IDC_VILLAGES, &CJouwalDlg::OnBnClickedVillages)
-	//ON_BN_CLICKED(IDC_COUNTRIES, &CJouwalDlg::OnBnClickedCountries)
-	//ON_BN_CLICKED(IDC_CONTINENTS, &CJouwalDlg::OnBnClickedContinents)
-	//ON_BN_CLICKED(IDC_SETTINGS, &CJouwalDlg::OnBnClickedSettings)
-	//ON_BN_CLICKED(IDC_QUIT, &CJouwalDlg::OnBnClickedQuit)
 END_MESSAGE_MAP()
 
 
@@ -101,7 +96,8 @@ BOOL CJouwalDlg::OnInitDialog()
 	GetDlgItem(IDC_DRAWER)->GetWindowRect(drawerRect);
 
 	drawerView = new DrawerView(this);
-	activitiesView = new ActivitiesView(this);
+	//activitiesView = new ActivitiesView(this);
+	homeView = new HomeView(this);
 	ScreenToClient(&rc);
 	ScreenToClient(&drawerRect);
 	//CenterWindow();
@@ -134,7 +130,8 @@ BOOL CJouwalDlg::OnInitDialog()
 
 	// setting up the view controller
 	
-	activitiesView->MoveWindow(rc);
+	//activitiesView->MoveWindow(rc);
+	homeView->MoveWindow(rc);
 	drawerView->MoveWindow(drawerRect);
 
 	// TODO: Add extra initialization here
@@ -206,9 +203,52 @@ BOOL CJouwalDlg::OnEraseBkgnd(CDC* pDC)
 	return bRes;                       // CDialog::OnEraseBkgnd(pDC);
 }
 
+//Destroying all the children of the main rect
+void CJouwalDlg::destroyAllChilds() {
+	delete(homeView);
+	delete(activitiesView);
+	homeView = nullptr;
+	activitiesView = nullptr;
+}
 
 
 /// <summary>
 /// Buttons Event handlers
 /// </summary>
 
+void CJouwalDlg::OnBnClickedHome() {
+	if (homeView == nullptr) {
+		destroyAllChilds();
+		homeView = new HomeView();
+		homeView->MoveWindow(rc);
+	}
+}
+void CJouwalDlg::OnBnClickedQuit()
+{
+	// TODO: Add your control notification handler code here
+	OnOK();
+}
+void CJouwalDlg::OnBnClickedActivities() {
+	if (activitiesView == nullptr) {
+		destroyAllChilds();
+		activitiesView = new ActivitiesView();
+		activitiesView->MoveWindow(rc);
+	}
+}
+LRESULT CJouwalDlg::OnCustom(WPARAM wparam, LPARAM lparam)
+{
+	CString* pstr = (CString*)wparam;
+	// Event from the quit Button
+	if (*pstr == L"Quit") {
+		OnBnClickedQuit();
+	}
+	// Event From the Home Button
+	if (*pstr == L"Home") {
+		OnBnClickedHome();
+	}
+	// Event From Activities Button
+	if (*pstr == L"Activities") {
+		OnBnClickedActivities();
+	}
+	return 0;
+}

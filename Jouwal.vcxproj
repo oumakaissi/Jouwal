@@ -188,6 +188,7 @@
     <ClInclude Include="DbConnector.h" />
     <ClInclude Include="DrawerView.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="HomeView.h" />
     <ClInclude Include="Jouwal.h" />
     <ClInclude Include="JouwalDlg.h" />
     <ClInclude Include="pch.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="ActivitiesView.cpp" />
     <ClCompile Include="DbConnector.cpp" />
     <ClCompile Include="DrawerView.cpp" />
+    <ClCompile Include="HomeView.cpp" />
     <ClCompile Include="Jouwal.cpp" />
     <ClCompile Include="JouwalDlg.cpp" />
     <ClCompile Include="pch.cpp">
@@ -215,15 +217,18 @@
     <None Include="res\Jouwal.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\Desktop\favicon.ico" />
     <Image Include="..\..\..\Documents\Adobe\Photoshop Docs\bg.bmp" />
     <Image Include="..\..\..\Documents\Adobe\Photoshop Docs\jouwal logo.bmp" />
     <Image Include="..\..\..\Documents\Adobe\Photoshop Docs\jouwal logo.png" />
     <Image Include="..\..\..\Documents\Adobe\Photoshop Docs\jouwal.bmp" />
     <Image Include="..\..\..\Downloads\address-location.png" />
     <Image Include="..\..\..\Downloads\aeroplane.png" />
+    <Image Include="..\..\..\Downloads\bg-1.bmp" />
     <Image Include="..\..\..\Downloads\bg-1.png" />
     <Image Include="..\..\..\Downloads\find-location.png" />
     <Image Include="..\..\..\Downloads\globe-line.png" />
+    <Image Include="..\..\..\Downloads\go_home_icon_181144.ico" />
     <Image Include="..\..\..\Downloads\holiday-vacation.png" />
     <Image Include="..\..\..\Downloads\home-button.bmp" />
     <Image Include="..\..\..\Downloads\plus-round-line.png" />
@@ -235,6 +240,7 @@
     <Image Include="res\bitmap7.bmp" />
     <Image Include="res\icon1.ico" />
     <Image Include="res\icon2.ico" />
+    <Image Include="res\icon3.ico" />
     <Image Include="res\Jouwal.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
