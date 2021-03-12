@@ -60,6 +60,9 @@
     <ClInclude Include="VillagesView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VillageCreate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jouwal.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VillagesView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VillageCreate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -183,6 +189,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\Desktop\favicon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon6.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

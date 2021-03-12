@@ -32,6 +32,8 @@
 #define IDD_SETTINGS                    165
 #define IDD_EDIT_ACTIVITY_DIALOG        168
 #define IDD_ACTIVITY_DELETE             170
+#define IDD_VILLAGE_CREATE              174
+#define IDI_ICON6                       176
 #define IDC_BUTTON2                     1009
 #define IDC_BUTTON3                     1010
 #define IDC_Activities                  1012
@@ -103,14 +105,16 @@
 #define IDC_SHOW_ACTIVITY               1071
 #define IDC_VILLAGE_PAYS                1072
 #define IDC_VILLAGE_PAYS_NUMBER         1072
+#define IDO_CREATE                      1073
+#define IDC_VILLAGE_NAME_CREATE_FIELD   1075
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        174
+#define _APS_NEXT_RESOURCE_VALUE        177
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1073
+#define _APS_NEXT_CONTROL_VALUE         1076
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
