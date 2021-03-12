@@ -6,10 +6,12 @@
 #include "ActivitiesView.h"
 #include "DrawerView.h"
 #include "HomeView.h"
+#include "VillagesView.h"
 
 #ifdef UWM_CUSTOM
 #define UWM_CUSTOM (WM_APP+1)
 #endif
+#include "SettingsView.h"
 
 // CJouwalDlg dialog
 class CJouwalDlg : public CDialogEx
@@ -44,9 +46,9 @@ protected:
 	void OnBnClickedActivities();
 	LRESULT OnCustom(WPARAM wparam, LPARAM lparam);
 	void OnBnClickedHome();
-
+	void OnBnClickedSettings();
 	void destroyAllChilds();
-	
+	void OnBnClickedVillages();
 	DECLARE_MESSAGE_MAP()
 public:
 	// Views
@@ -59,6 +61,8 @@ public:
 	DrawerView* drawerView;
 	HomeView* homeView;
 	ActivitiesView* activitiesView;
+	SettingsView* settingsView;
+	VillagesView* villagesView;
 	// Components
 
 	// Buttons

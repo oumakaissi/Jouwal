@@ -86,6 +86,8 @@ BEGIN_MESSAGE_MAP(DrawerView, CDialogEx)
 	ON_BN_CLICKED(IDC_QUIT, &DrawerView::OnBnClickedQuit)
 	ON_BN_CLICKED(IDC_HOME, &DrawerView::OnBnClickedHome)
 	ON_BN_CLICKED(IDC_Activities, &DrawerView::OnBnClickedActivities)
+	ON_BN_CLICKED(IDC_SETTINGS, &DrawerView::OnBnClickedSettings)
+	ON_BN_CLICKED(IDC_VILLAGES, &DrawerView::OnBnClickedVillages)
 END_MESSAGE_MAP()
 
 
@@ -117,5 +119,23 @@ void DrawerView::OnBnClickedActivities()
 	// TODO: Add your control notification handler code here
 
 	CString str = _T("Activities");
+	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
+}
+
+
+void DrawerView::OnBnClickedSettings()
+{
+	// TODO: Add your control notification handler code here
+
+	CString str = _T("Settings");
+	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
+}
+
+
+void DrawerView::OnBnClickedVillages()
+{
+	// TODO: Add your control notification handler code here
+
+	CString str = _T("Villages");
 	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
 }

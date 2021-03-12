@@ -23,6 +23,7 @@ DbConnector::DbConnector() {
 	}
 }
 }
+recset = new CRecordset(&database);
 }
 DbConnector::~DbConnector() {
 	delete myDB;
@@ -51,7 +52,7 @@ void DbConnector::executeQuery(CString q) {
 	database.ExecuteSQL(q);
 }
 CRecordset* DbConnector::retrieveQuery(CString q) {
-	CRecordset recset(&database);
-	recset.Open(AFX_DB_USE_DEFAULT_TYPE, q, NULL);
-	return &recset;
+
+	recset->Open(AFX_DB_USE_DEFAULT_TYPE, q, NULL);
+	return recset;
 }

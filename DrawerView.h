@@ -37,4 +37,6 @@ public:
 	afx_msg void OnBnClickedQuit();
 	afx_msg void OnBnClickedHome();
 	afx_msg void OnBnClickedActivities();
+	afx_msg void OnBnClickedSettings();
+	afx_msg void OnBnClickedVillages();
 };

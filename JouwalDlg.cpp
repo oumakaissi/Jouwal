@@ -207,8 +207,12 @@ BOOL CJouwalDlg::OnEraseBkgnd(CDC* pDC)
 void CJouwalDlg::destroyAllChilds() {
 	delete(homeView);
 	delete(activitiesView);
+	delete(settingsView);
+	delete(villagesView);
 	homeView = nullptr;
 	activitiesView = nullptr;
+	settingsView = nullptr;
+	villagesView = nullptr;
 }
 
 
@@ -235,6 +239,20 @@ void CJouwalDlg::OnBnClickedActivities() {
 		activitiesView->MoveWindow(rc);
 	}
 }
+void CJouwalDlg::OnBnClickedSettings() {
+	if (settingsView == nullptr) {
+		destroyAllChilds();
+		settingsView = new SettingsView();
+		settingsView->MoveWindow(rc);
+	}
+}
+void CJouwalDlg::OnBnClickedVillages() {
+	if (settingsView == nullptr) {
+		destroyAllChilds();
+		villagesView = new VillagesView();
+		villagesView->MoveWindow(rc);
+	}
+}
 LRESULT CJouwalDlg::OnCustom(WPARAM wparam, LPARAM lparam)
 {
 	CString* pstr = (CString*)wparam;
@@ -249,6 +267,12 @@ LRESULT CJouwalDlg::OnCustom(WPARAM wparam, LPARAM lparam)
 	// Event From Activities Button
 	if (*pstr == L"Activities") {
 		OnBnClickedActivities();
+	}
+	if (*pstr == L"Settings") {
+		OnBnClickedSettings();
+	}
+	if (*pstr == L"Villages") {
+		OnBnClickedVillages();
 	}
 	return 0;
 }

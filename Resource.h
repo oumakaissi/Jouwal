@@ -29,6 +29,9 @@
 #define IDI_ICON3                       162
 #define IDI_ICON4                       163
 #define IDI_ICON5                       164
+#define IDD_SETTINGS                    165
+#define IDD_EDIT_ACTIVITY_DIALOG        168
+#define IDD_ACTIVITY_DELETE             170
 #define IDC_BUTTON2                     1009
 #define IDC_BUTTON3                     1010
 #define IDC_Activities                  1012
@@ -39,6 +42,8 @@
 #define IDC_HOME                        1017
 #define IDC_ADD_ACTIVITIE               1017
 #define IDC_ACTIVITY_CREATE             1017
+#define IDC_DBCREATE                    1017
+#define IDC_ADD_ACTIVITY_TO_VILLAGE     1017
 #define IDC_HOME2                       1018
 #define IDC_HOME3                       1019
 #define IDC_VILLAGES                    1019
@@ -63,6 +68,7 @@
 #define IDC_DESIGNATION_FIELD           1036
 #define IDC_DESIGNATION_TEXT            1037
 #define IDC_VILLAGE_ACTIVITE_FIELD      1038
+#define IDC_VILLAGE_NUMBER_FIELD_ACTIVITY 1038
 #define IDC_EDIT1                       1039
 #define IDC_ACTIVITY_CANCEL             1041
 #define IDC_ACTIVITY_CREATE_GROUP_BOX   1042
@@ -73,14 +79,38 @@
 #define IDC_STATIC_ACTIVITY_NUMBER      1046
 #define IDC_DRAWER                      1048
 #define IDC_HOME_WELCOM_IMAGE           1049
+#define IDC_FONTCHANGER                 1051
+#define IDC_REFRESH                     1052
+#define IDC_VILAGE_NUMBER_ACTIVITY      1053
+#define IDC_VILLAGE_NUMBER              1054
+#define IDC_EDIT_ACTIVITY_BUTTON        1055
+#define IDC_ACTIVITY_NUMBER_TEXT        1056
+#define IDC_ACTIVITY_NUMBER_EDIT_FIELD  1057
+#define IDC_DESIGNATION_ACTIVITY_EDIT_FIELD 1058
+#define IDO_ACTIVITY_DELETE_BUTTON      1059
+#define IDC_ACTIVITY_DELETE_NUMBER      1060
+#define IDC_STATIC_VILLAGE_NUMBER       1061
+#define IDC_SEARCH_VILLAGE_FIELD        1062
+#define IDC_SEARCH_VILLAGES_BUTTON      1063
+#define IDC_DELETE_ONE_VILLAGE          1064
+#define IDC_DELETE_ALL_VILLAGES         1065
+#define IDC_EDIT_VILLAGE                1066
+#define IDC_ADD_VILLAGE                 1067
+#define IDC_VILLAGES_LIST               1068
+#define IDC_EDIT_ACTIVITY_VILLAGE       1069
+#define IDC_REMOVE_ACTIVITY             1070
+#define IDC_MFCBUTTON2                  1071
+#define IDC_SHOW_ACTIVITY               1071
+#define IDC_VILLAGE_PAYS                1072
+#define IDC_VILLAGE_PAYS_NUMBER         1072
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        165
+#define _APS_NEXT_RESOURCE_VALUE        174
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1050
+#define _APS_NEXT_CONTROL_VALUE         1073
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

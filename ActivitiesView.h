@@ -12,7 +12,6 @@ public:
 	ActivitiesView(CWnd* pParent = nullptr);   // standard constructor
 	BOOL OnInitDialog();
 	void retrieveData(CString q);
-	void retrieveData();
 	virtual ~ActivitiesView();
 
 // Dialog Data
@@ -47,4 +46,10 @@ public:
 	CMFCButton editButton;
 	CMFCButton deleteOneButton;
 	CMFCButton deleteAllButton;
+	afx_msg void OnBnClickedRefresh();
+	void OnSearchChange();
+	afx_msg void OnEnChangeSearchActivitieField();
+	CString villageNumber;
+	CString villageNumberValue;
+	afx_msg void OnEnChangeVillageNumberFieldActivity();
 };

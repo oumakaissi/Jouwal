@@ -11,6 +11,7 @@ private:
 	CString sDriver;
 	CString sFile;
 	CString sDsn;
+	CRecordset *recset;
 
 	DbConnector();
 	DbConnector(const DbConnector& ) = delete;
@@ -27,6 +28,5 @@ public:
 	CString getSDsn();
 	void executeQuery(CString q);
 	CRecordset *retrieveQuery(CString q);
-
 };
 
