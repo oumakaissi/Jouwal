@@ -63,6 +63,9 @@
     <ClInclude Include="VillageCreate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VillageDelete.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jouwal.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VillageCreate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VillageDelete.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,6 +5,7 @@
 #include "Jouwal.h"
 #include "VillagesView.h"
 #include "afxdialogex.h"
+#include "VillageCreate.h"
 
 
 // VillagesView dialog
@@ -25,6 +26,12 @@ VillagesView::~VillagesView()
 }
 BOOL VillagesView::OnInitDialog() {
 	CDialogEx::OnInitDialog();
+	villagesList.InsertColumn(0, L"no_village", LVCFMT_CENTER, 80, -1);
+	villagesList.InsertColumn(1, L"nom", LVCFMT_CENTER, 180, -1);
+	villagesList.InsertColumn(2, L"Country Name", LVCFMT_CENTER, 180, -1);
+
+	CString query = L"SELECT * FROM villages order by 1 desc";
+	retrieveData(query);
 
 	return TRUE;
 }
@@ -54,6 +61,7 @@ BEGIN_MESSAGE_MAP(VillagesView, CDialogEx)
 	ON_BN_CLICKED(IDC_SEARCH_VILLAGES_BUTTON, &VillagesView::OnBnClickedSearchVillagesButton)
 	ON_BN_CLICKED(IDC_REFRESH, &VillagesView::OnBnClickedRefresh)
 	ON_EN_CHANGE(IDC_VILLAGE_PAYS, &VillagesView::OnEnChangeVillagePays)
+	ON_EN_CHANGE(IDC_VILLAGE_PAYS_NUMBER, &VillagesView::OnEnChangeVillagePaysNumber)
 END_MESSAGE_MAP()
 
 BOOL VillagesView::OnEraseBkgnd(CDC* pDC)
@@ -81,7 +89,6 @@ void VillagesView::retrieveData(CString q) {
 	/// </summary>
 	db = DbConnector::createDb();
 	recset = db->retrieveQuery(q);
-	CString V_no, V_designation;
 	int i = 0;
 	while (!(recset->IsEOF())) {
 		CString no = L"";
@@ -101,21 +108,19 @@ void VillagesView::retrieveData(CString q) {
 }
 
 void VillagesView::onSearch() {
-	GetDlgItemText(IDC_SEARCH_ACTIVITIE_FIELD, villageNumberValue);
+	GetDlgItemText(IDC_SEARCH_VILLAGE_FIELD, villageNumberValue);
 	GetDlgItemText(IDC_VILLAGE_PAYS, countryNumberValue);
 
-	CString query = L"SELECT * FROM villages";
+	CString query = L"SELECT * FROM villages ";
 	if (countryNumberValue != "") {
 		if (villageNumberValue != "") {
 			query += L" where no_village=" + villageNumberValue;
-			query += L" and no_village in ( select no_village from avoir where no_country = ";
+			query += L" and no_country = ";
 			query += countryNumberValue;
-			query += ")";
 		}
 		else {
-			query += L" where no_village in ( select no_village from avoir where no_country= ";
+			query += L" where no_country = ";
 			query += countryNumberValue;
-			query += ")";
 		}
 	}
 	else {
@@ -134,6 +139,8 @@ void VillagesView::onSearch() {
 void VillagesView::OnBnClickedAddVillage()
 {
 	// TODO: Add your control notification handler code here
+	VillageCreate villagesCreate = new VillageCreate();
+	villagesCreate.DoModal();
 }
 
 
@@ -215,4 +222,16 @@ void VillagesView::OnEnChangeVillagePays()
 	// TODO:  Add your control notification handler code here
 	onSearch();
 
+}
+
+
+void VillagesView::OnEnChangeVillagePaysNumber()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+	onSearch();
 }

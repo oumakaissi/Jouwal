@@ -24,4 +24,5 @@ public:
 	afx_msg void OnBnClickedCreate();
 	afx_msg void OnBnClickedCancel();
 	CString villageNameValue;
+	CString countryNumberValue;
 };

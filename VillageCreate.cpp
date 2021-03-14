@@ -15,6 +15,7 @@ IMPLEMENT_DYNAMIC(VillageCreate, CDialogEx)
 VillageCreate::VillageCreate(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_VILLAGE_CREATE, pParent)
 	, villageNameValue(_T(""))
+	, countryNumberValue(_T(""))
 {
 
 }
@@ -27,6 +28,7 @@ void VillageCreate::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_VILLAGE_NAME_CREATE_FIELD, villageNameValue);
+	DDX_Text(pDX, IDC_VILLAGE_COUNTRY_NUMBER_FIELD, countryNumberValue);
 }
 
 
@@ -43,9 +45,12 @@ void VillageCreate::OnBnClickedCreate()
 {
 	// TODO: Add your control notification handler code here
 	GetDlgItemText(IDC_VILLAGE_NAME_CREATE_FIELD, villageNameValue);
-	CString insertSQL = L"INSERT INTO villages(nom) VALUES ('" + villageNameValue + "');";
+	GetDlgItemText(IDC_VILLAGE_COUNTRY_NUMBER_FIELD, countryNumberValue);
+
+	CString insertSQL = L"INSERT INTO villages(nom, no_country) VALUES ('" + villageNameValue + "', " + countryNumberValue + ");";
 	DbConnector* db = DbConnector::createDb();
 	db->executeQuery(insertSQL);
+	OnOK();
 }
 
 

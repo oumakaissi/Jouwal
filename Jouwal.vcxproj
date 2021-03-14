@@ -198,6 +198,7 @@
     <ClInclude Include="SettingsView.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VillageCreate.h" />
+    <ClInclude Include="VillageDelete.h" />
     <ClInclude Include="VillagesView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +219,7 @@
     </ClCompile>
     <ClCompile Include="SettingsView.cpp" />
     <ClCompile Include="VillageCreate.cpp" />
+    <ClCompile Include="VillageDelete.cpp" />
     <ClCompile Include="VillagesView.cpp" />
   </ItemGroup>
   <ItemGroup>

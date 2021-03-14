@@ -64,26 +64,26 @@ void SettingsView::OnBnClickedDbcreate()
 {
 	// TODO: Add your control notification handler code here
 	CString activitesTableSQL = L"CREATE TABLE ACTIVITIES(no_activities AUTOINCREMENT PRIMARY KEY,designation VARCHAR(100));";
-	CString villagesTableSQL = L"CREATE TABLE VILLAGES(no_village AUTOINCREMENT PRIMARY KEY,nom VARCHAR(100));";
+	CString villagesTableSQL = L"CREATE TABLE VILLAGES(no_village AUTOINCREMENT PRIMARY KEY,nom VARCHAR(100),no_country INTEGER, FOREIGN KEY (no_country) REFERENCES countries(no_country));";
 	CString languagesTableSQL = L"CREATE TABLE languages(no_language AUTOINCREMENT PRIMARY KEY,designation VARCHAR(30));";
-	CString countriesTableSQL = L"CREATE TABLE countries(no_country AUTOINCREMENT PRIMARY KEY,nom VARCHAR(30));";
+	CString countriesTableSQL = L"CREATE TABLE countries(no_country AUTOINCREMENT PRIMARY KEY,nom VARCHAR(30), no_continent INTEGER, FOREIGN KEY (no_continent) REFERENCES continents(no_continent));";
 	CString continentsTableSQL = L"CREATE TABLE continents(no_continent AUTOINCREMENT PRIMARY KEY,nom VARCHAR(30));";
 
 	CString proposerTableSQL = L"CREATE TABLE proposer(no_activities INTEGER,no_village INTEGER, gratuite BIT ,FOREIGN KEY (no_village) REFERENCES villages(no_village),FOREIGN KEY (no_activities) REFERENCES activities(no_activities))";
 	CString parlerTableSQL = L"CREATE TABLE parler(no_language INTEGER,no_village INTEGER,FOREIGN KEY (no_language) REFERENCES languages(no_language),FOREIGN KEY (no_village) REFERENCES villages(no_village))";
-	CString avoirTableSQL = L"CREATE TABLE avoir(no_country INTEGER,no_village INTEGER,FOREIGN KEY (no_country) REFERENCES countries(no_country),FOREIGN KEY (no_village) REFERENCES villages(no_village))";
-	CString seTrouveTableSQL = L"CREATE TABLE setrouve(no_country INTEGER,no_continent INTEGER,FOREIGN KEY (no_country) REFERENCES countries(no_country),FOREIGN KEY (no_continent) REFERENCES continents(no_continent))";
+	//CString avoirTableSQL = L"CREATE TABLE avoir(no_country INTEGER,no_village INTEGER,FOREIGN KEY (no_country) REFERENCES countries(no_country),FOREIGN KEY (no_village) REFERENCES villages(no_village))";
+	//CString seTrouveTableSQL = L"CREATE TABLE setrouve(no_country INTEGER,no_continent INTEGER,FOREIGN KEY (no_country) REFERENCES countries(no_country),FOREIGN KEY (no_continent) REFERENCES continents(no_continent))";
 	
 
 	DbConnector *db = DbConnector::createDb();
-	db->executeQuery(activitesTableSQL);
-	db->executeQuery(villagesTableSQL);
-	db->executeQuery(languagesTableSQL);
+	//db->executeQuery(activitesTableSQL);
+	//db->executeQuery(villagesTableSQL);
+	//db->executeQuery(languagesTableSQL);
 	db->executeQuery(countriesTableSQL);
-	db->executeQuery(continentsTableSQL);
-	db->executeQuery(proposerTableSQL);
-	db->executeQuery(parlerTableSQL);
-	db->executeQuery(avoirTableSQL);
-	db->executeQuery(seTrouveTableSQL);
+	//db->executeQuery(continentsTableSQL);
+	//db->executeQuery(proposerTableSQL);
+	//db->executeQuery(parlerTableSQL);
+	//db->executeQuery(avoirTableSQL);
+	//db->executeQuery(seTrouveTableSQL);
 
 }

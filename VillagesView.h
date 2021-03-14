@@ -54,4 +54,5 @@ public:
 	afx_msg void OnBnClickedRefresh();
 	CString countryNumberValue;
 	afx_msg void OnEnChangeVillagePays();
+	afx_msg void OnEnChangeVillagePaysNumber();
 };
