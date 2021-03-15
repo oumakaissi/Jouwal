@@ -276,7 +276,7 @@ void CJouwalDlg::OnBnClickedSettings() {
 	}
 }
 void CJouwalDlg::OnBnClickedVillages() {
-	if (settingsView == nullptr) {
+	if (villagesView == nullptr) {
 		destroyAllChilds();
 		villagesView = new VillagesView();
 		villagesView->MoveWindow(rc);

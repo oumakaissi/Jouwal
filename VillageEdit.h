@@ -1,4 +1,5 @@
 #pragma once
+#include "DbConnector.h"
 
 
 // VillageEdit dialog
@@ -11,17 +12,26 @@ public:
 	VillageEdit(CWnd* pParent = nullptr);   // standard constructor
 	virtual ~VillageEdit();
 
+	BOOL OnInitDialog();
+
+	void retrieveLanguages(CString q);
+
+	void retrieveVillages(CString q);
+
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_VILLAGE_EDIT };
 #endif
 
 protected:
+	void retrieveActivities(CString q);
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedCancel();
+	afx_msg
+		BOOL OnEraseBkgnd(CDC* pDC);
+	void OnBnClickedCancel();
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedMfcbutton4();
 	afx_msg void OnBnClickedMfcbutton5();
@@ -52,4 +62,8 @@ public:
 	CEdit villageNameControl;
 	CEdit villageCountryNumberControl;
 	CEdit villageNumberControl;
+	DbConnector* db;
+	CRecordset* recset;
+
+	
 };
