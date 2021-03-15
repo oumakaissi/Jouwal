@@ -8,11 +8,7 @@
 #define IDD_Activities_View             101
 #define IDD_JOUWAL_DIALOG               102
 #define IDD_Villages_VIEW               103
-#define IDD_COUNTRIES_VIEW              104
-#define IDD_CONTINENT_VIEW              105
 #define IDD_HOME_VIEW                   106
-#define IDD_SETTINGS_VIEW               107
-#define IDD_LANGUAGES_VIEW              108
 #define IDR_MAINFRAME                   128
 #define IDI_ICON1                       136
 #define IDI_ICON2                       137
@@ -20,7 +16,6 @@
 #define IDB_PNG2                        141
 #define IDB_BITMAP1                     147
 #define IDB_BITMAP2                     149
-#define IDD_DIALOG1                     150
 #define IDD_ACTIVITES_ADD_VIEW          151
 #define IDD_ACTIVITIES_DELETE_DIALOG    152
 #define IDD_FORMVIEW                    153
@@ -35,6 +30,13 @@
 #define IDD_VILLAGE_CREATE              174
 #define IDI_ICON6                       176
 #define IDD_VILLAGE_DELETE              177
+#define IDD_VILLAGE_EDIT                179
+#define IDD_LANGUAGES_View              180
+#define IDD_Language_Create             181
+#define IDD_Countries_View              182
+#define IDD_Country_Create              183
+#define IDD_Continent_View              184
+#define IDD_Continent_Create            185
 #define IDC_BUTTON2                     1009
 #define IDC_BUTTON3                     1010
 #define IDC_Activities                  1012
@@ -47,6 +49,7 @@
 #define IDC_ACTIVITY_CREATE             1017
 #define IDC_DBCREATE                    1017
 #define IDC_ADD_ACTIVITY_TO_VILLAGE     1017
+#define IDC_VILLAGE_EDIT_BUTTON         1017
 #define IDC_HOME2                       1018
 #define IDC_HOME3                       1019
 #define IDC_VILLAGES                    1019
@@ -61,7 +64,6 @@
 #define IDC_INKPICTURE1                 1024
 #define IDC_LANGUAGES                   1025
 #define IDC_VIEWCONTROL                 1027
-#define IDC_BG_LIGHT                    1028
 #define IDC_ACTIVITIES_LIST             1029
 #define IDC_SEARCH_ACTIVITIE_FIELD      1030
 #define IDC_DELETE_ONE_ACTIVITIE        1032
@@ -80,6 +82,7 @@
 #define IDC_SEARCH_ACTIVITY_VILLAGE_NUMBER 1044
 #define IDC_STATIC_TEXT_ACTIVITY_VILLAGE_NUMBER 1045
 #define IDC_STATIC_ACTIVITY_NUMBER      1046
+#define IDC_STATIC_ACTIVITY_NUMBER2     1047
 #define IDC_DRAWER                      1048
 #define IDC_HOME_WELCOM_IMAGE           1049
 #define IDC_FONTCHANGER                 1051
@@ -104,6 +107,7 @@
 #define IDC_REMOVE_ACTIVITY             1070
 #define IDC_MFCBUTTON2                  1071
 #define IDC_SHOW_ACTIVITY               1071
+#define IDC_add_language_to_village     1071
 #define IDC_VILLAGE_PAYS                1072
 #define IDC_VILLAGE_PAYS_NUMBER         1072
 #define IDO_CREATE                      1073
@@ -111,14 +115,51 @@
 #define IDO_VILLAGE_DELETE              1076
 #define IDC_VILLAGE_NUMBER_FIELD        1077
 #define IDC_VILLAGE_COUNTRY_NUMBER_FIELD 1078
+#define IDC_VILLAGE_ACTIVITY_LIST       1081
+#define IDC_VILLAGE_LANGUAGES_LIST      1082
+#define IDC_MFCBUTTON3                  1083
+#define IDC_remove_Language_from_village 1083
+#define IDC_ACTIVITY_NUMBER_FIELD       1084
+#define IDC_MFCBUTTON4                  1085
+#define IDC_add_aactivity_to_village_button 1085
+#define IDC_MFCBUTTON5                  1086
+#define IDC_remove_activity_from_village 1086
+#define IDC_GRATUITE_FIELD              1087
+#define IDC_VILLAGE_NAME_FIELD          1089
+#define IDC_LANGUAGE_NUMBER_FIELD       1091
+#define IDC_ADD                         1092
+#define IDC_EDIT                        1093
+#define IDC_DELETE_ONE                  1094
+#define IDC_DELETE_ALL                  1095
+#define IDC_SEARCH                      1096
+#define IDC_SEARCH_languages_FIELD      1097
+#define IDC_languages_LIST              1098
+#define IDC_CREATE                      1099
+#define IDC_language_DESIGNATION_FIELD  1100
+#define IDC_VILLAGE_NUMBER_FIELD_Language 1101
+#define IDC_SEARCH_Countries_FIELD      1102
+#define IDC_SEARCH_Countries_BUTTON     1103
+#define IDC_EDIT_Country                1104
+#define IDC_ADD_Country                 1105
+#define IDC_Countries_LIST              1106
+#define IDC_Nom_TEXT                    1107
+#define IDC_SEARCH_Countries__Continent_FIELD2 1107
+#define IDC_SEARCH_Countries__Continent_FIELD 1107
+#define IDC_Nom_FIELD                   1108
+#define IDC_Continent_Number_Field      1109
+#define IDC_SEARCH_Continent_FIELD      1109
+#define IDC_Nom_TEXT2                   1110
+#define IDC_SEARCH_Contienents_BUTTON   1110
+#define IDC_EDIT_Continent              1111
+#define IDC_ADD_Continent               1112
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        179
+#define _APS_NEXT_RESOURCE_VALUE        182
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1079
+#define _APS_NEXT_CONTROL_VALUE         1113
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

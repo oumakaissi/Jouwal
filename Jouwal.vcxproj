@@ -187,18 +187,25 @@
     <ClInclude Include="ActivitiesView.h" />
     <ClInclude Include="ActivityDelete.h" />
     <ClInclude Include="ActivityEdit.h" />
+    <ClInclude Include="ContinentCreate.h" />
+    <ClInclude Include="ContinentsView.h" />
+    <ClInclude Include="CountriesView.h" />
+    <ClInclude Include="CountryCreate.h" />
     <ClInclude Include="DbConnector.h" />
     <ClInclude Include="DrawerView.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HomeView.h" />
     <ClInclude Include="Jouwal.h" />
     <ClInclude Include="JouwalDlg.h" />
+    <ClInclude Include="LanguagesCreate.h" />
+    <ClInclude Include="LanguagesView.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SettingsView.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VillageCreate.h" />
     <ClInclude Include="VillageDelete.h" />
+    <ClInclude Include="VillageEdit.h" />
     <ClInclude Include="VillagesView.h" />
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +213,17 @@
     <ClCompile Include="ActivitiesView.cpp" />
     <ClCompile Include="ActivityDelete.cpp" />
     <ClCompile Include="ActivityEdit.cpp" />
+    <ClCompile Include="ContinentCreate.cpp" />
+    <ClCompile Include="ContinentsView.cpp" />
+    <ClCompile Include="CountriesView.cpp" />
+    <ClCompile Include="CountryCreate.cpp" />
     <ClCompile Include="DbConnector.cpp" />
     <ClCompile Include="DrawerView.cpp" />
     <ClCompile Include="HomeView.cpp" />
     <ClCompile Include="Jouwal.cpp" />
     <ClCompile Include="JouwalDlg.cpp" />
+    <ClCompile Include="LanguagesCreate.cpp" />
+    <ClCompile Include="LanguagesView.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -220,6 +233,7 @@
     <ClCompile Include="SettingsView.cpp" />
     <ClCompile Include="VillageCreate.cpp" />
     <ClCompile Include="VillageDelete.cpp" />
+    <ClCompile Include="VillageEdit.cpp" />
     <ClCompile Include="VillagesView.cpp" />
   </ItemGroup>
   <ItemGroup>

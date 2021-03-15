@@ -88,6 +88,9 @@ BEGIN_MESSAGE_MAP(DrawerView, CDialogEx)
 	ON_BN_CLICKED(IDC_Activities, &DrawerView::OnBnClickedActivities)
 	ON_BN_CLICKED(IDC_SETTINGS, &DrawerView::OnBnClickedSettings)
 	ON_BN_CLICKED(IDC_VILLAGES, &DrawerView::OnBnClickedVillages)
+	ON_BN_CLICKED(IDC_LANGUAGES, &DrawerView::OnBnClickedLanguages)
+	ON_BN_CLICKED(IDC_COUNTRIES, &DrawerView::OnBnClickedCountries)
+	ON_BN_CLICKED(IDC_CONTINENTS, &DrawerView::OnBnClickedContinents)
 END_MESSAGE_MAP()
 
 
@@ -137,5 +140,29 @@ void DrawerView::OnBnClickedVillages()
 	// TODO: Add your control notification handler code here
 
 	CString str = _T("Villages");
+	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
+}
+
+
+void DrawerView::OnBnClickedLanguages()
+{
+	// TODO: Add your control notification handler code here
+	CString str = _T("Languages");
+	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
+}
+
+
+void DrawerView::OnBnClickedCountries()
+{
+	// TODO: Add your control notification handler code here
+	CString str = _T("Countries");
+	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
+}
+
+
+void DrawerView::OnBnClickedContinents()
+{
+	// TODO: Add your control notification handler code here
+	CString str = _T("Continents");
 	GetParent()->SendMessage(UWM_CUSTOM, (WPARAM)&str, 0);
 }

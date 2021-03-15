@@ -209,16 +209,27 @@ void CJouwalDlg::destroyAllChilds() {
 	delete(activitiesView);
 	delete(settingsView);
 	delete(villagesView);
+	delete(languagesView);
+	delete(countriesView);
+	delete(continentsView);
 	homeView = nullptr;
 	activitiesView = nullptr;
 	settingsView = nullptr;
 	villagesView = nullptr;
+	languagesView = nullptr;
+	continentsView = nullptr;
+	countriesView = nullptr;
 }
 
 
 /// <summary>
 /// Buttons Event handlers
 /// </summary>
+void CJouwalDlg::OnBnClickedQuit()
+{
+	// TODO: Add your control notification handler code here
+	OnOK();
+}
 
 void CJouwalDlg::OnBnClickedHome() {
 	if (homeView == nullptr) {
@@ -227,16 +238,34 @@ void CJouwalDlg::OnBnClickedHome() {
 		homeView->MoveWindow(rc);
 	}
 }
-void CJouwalDlg::OnBnClickedQuit()
-{
-	// TODO: Add your control notification handler code here
-	OnOK();
-}
 void CJouwalDlg::OnBnClickedActivities() {
 	if (activitiesView == nullptr) {
 		destroyAllChilds();
 		activitiesView = new ActivitiesView();
 		activitiesView->MoveWindow(rc);
+	}
+}
+void CJouwalDlg::OnBnClickedLanguages() {
+	if (languagesView == nullptr) {
+		destroyAllChilds();
+		languagesView = new LanguagesView();
+		languagesView->MoveWindow(rc);
+	}
+}
+void CJouwalDlg::OnBnClickedCountries()
+{
+	if (countriesView == nullptr) {
+		destroyAllChilds();
+		countriesView = new CountriesView();
+		countriesView->MoveWindow(rc);
+	}
+}
+void CJouwalDlg::OnBnClickedContinents()
+{
+	if (continentsView == nullptr) {
+		destroyAllChilds();
+		continentsView = new ContinentsView();
+		continentsView->MoveWindow(rc);
 	}
 }
 void CJouwalDlg::OnBnClickedSettings() {
@@ -274,5 +303,15 @@ LRESULT CJouwalDlg::OnCustom(WPARAM wparam, LPARAM lparam)
 	if (*pstr == L"Villages") {
 		OnBnClickedVillages();
 	}
+	if (*pstr == L"Languages") {
+		OnBnClickedLanguages();
+	}
+	if (*pstr == L"Countries") {
+		OnBnClickedCountries();
+	}
+	if (*pstr == L"Continents") {
+		OnBnClickedContinents();
+	}
+
 	return 0;
 }

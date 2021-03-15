@@ -6,6 +6,7 @@
 #include "VillagesView.h"
 #include "afxdialogex.h"
 #include "VillageCreate.h"
+#include "VillageEdit.h"
 
 
 // VillagesView dialog
@@ -147,12 +148,15 @@ void VillagesView::OnBnClickedAddVillage()
 void VillagesView::OnBnClickedEditVillage()
 {
 	// TODO: Add your control notification handler code here
+	VillageEdit villageEdit = new VillageEdit();
+	villageEdit.DoModal();
 }
 
 
 void VillagesView::OnBnClickedAddActivityToVillage()
 {
 	// TODO: Add your control notification handler code here
+
 }
 
 

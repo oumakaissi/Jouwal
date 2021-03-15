@@ -39,4 +39,7 @@ public:
 	afx_msg void OnBnClickedActivities();
 	afx_msg void OnBnClickedSettings();
 	afx_msg void OnBnClickedVillages();
+	afx_msg void OnBnClickedLanguages();
+	afx_msg void OnBnClickedCountries();
+	afx_msg void OnBnClickedContinents();
 };

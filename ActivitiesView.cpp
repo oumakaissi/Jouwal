@@ -64,7 +64,6 @@ void ActivitiesView::retrieveData(CString q) {
 	/// </summary>
 	db = DbConnector::createDb();
 	recset = db->retrieveQuery(q);
-	CString V_no, V_designation;
 	int i = 0;
 	while (!(recset->IsEOF())) {
 		CString no = L"";
@@ -171,10 +170,7 @@ void ActivitiesView::OnBnClickedDeleteAllActivities()
 void ActivitiesView::OnBnClickedSearchActivitiesButton()
 {
 	// TODO: Add your control notification handler code here
-	GetDlgItemText(IDC_SEARCH_ACTIVITIE_FIELD, activitySearchFieldValue);
-
-	CString query = L"SELECT * FROM activities where no_activities=" + activitySearchFieldValue + " order by 1 desc";
-	retrieveData(query);
+	OnSearchChange();
 }
 
 

@@ -7,11 +7,14 @@
 #include "DrawerView.h"
 #include "HomeView.h"
 #include "VillagesView.h"
+#include "LanguagesView.h"
+#include "SettingsView.h"
+#include "CountriesView.h"
+#include "ContinentsView.h"
 
 #ifdef UWM_CUSTOM
 #define UWM_CUSTOM (WM_APP+1)
 #endif
-#include "SettingsView.h"
 
 // CJouwalDlg dialog
 class CJouwalDlg : public CDialogEx
@@ -49,6 +52,9 @@ protected:
 	void OnBnClickedSettings();
 	void destroyAllChilds();
 	void OnBnClickedVillages();
+	void OnBnClickedLanguages();
+	void OnBnClickedCountries();
+	void OnBnClickedContinents();
 	DECLARE_MESSAGE_MAP()
 public:
 	// Views
@@ -63,6 +69,9 @@ public:
 	ActivitiesView* activitiesView;
 	SettingsView* settingsView;
 	VillagesView* villagesView;
+	LanguagesView* languagesView;
+	CountriesView* countriesView;
+	ContinentsView* continentsView;
 	// Components
 
 	// Buttons
