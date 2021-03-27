@@ -21,7 +21,9 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedVillageDelete();
+	afx_msg
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	void OnBnClickedVillageDelete();
 	afx_msg void OnBnClickedCancel();
 	CMFCButton deleteButton;
 	CMFCButton cancelButton;

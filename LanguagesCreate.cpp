@@ -32,10 +32,24 @@ void LanguagesCreate::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(LanguagesCreate, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDC_CREATE, &LanguagesCreate::OnBnClickedCreate)
 	ON_BN_CLICKED(IDC_ACTIVITY_CANCEL, &LanguagesCreate::OnBnClickedActivityCancel)
 END_MESSAGE_MAP()
 
+
+HBRUSH LanguagesCreate::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 BOOL LanguagesCreate::OnEraseBkgnd(CDC* pDC)
 {

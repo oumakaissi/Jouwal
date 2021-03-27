@@ -38,19 +38,35 @@ void ActivityEdit::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ActivityEdit, CDialogEx)
 	ON_WM_ERASEBKGND()
+ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDC_EDIT_ACTIVITY_BUTTON, &ActivityEdit::OnBnClickedEditActivityButton)
 	ON_BN_CLICKED(IDCANCEL, &ActivityEdit::OnBnClickedCancel)
 	ON_EN_CHANGE(IDC_ACTIVITY_NUMBER_EDIT_FIELD, &ActivityEdit::OnEnChangeActivityNumberEditField)
 END_MESSAGE_MAP()
 
+
+
+HBRUSH ActivityEdit::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
+
 BOOL ActivityEdit::OnInitDialog() {
 	CDialog::OnInitDialog();
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 	
-	cancelButton.SetFaceColor(RGB(80, 40, 80), true);
-	cancelButton.SetTextColor(RGB(255, 255, 255));
+	//cancelButton.SetFaceColor(RGB(80, 40, 80), true);
+	//cancelButton.SetTextColor(RGB(255, 255, 255));
 	return TRUE;
 }
 

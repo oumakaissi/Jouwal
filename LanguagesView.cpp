@@ -29,20 +29,20 @@ BOOL LanguagesView::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	searchButton.SetFaceColor(RGB(80, 40, 80), true);
-	searchButton.SetTextColor(RGB(255, 255, 255));
+	//searchButton.SetFaceColor(RGB(80, 40, 80), true);
+	//searchButton.SetTextColor(RGB(255, 255, 255));
 
-	addButton.SetFaceColor(RGB(80, 40, 80), true);
-	addButton.SetTextColor(RGB(255, 255, 255));
+	//addButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteOneButton.SetTextColor(RGB(255, 255, 255));
+	//deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteOneButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteAllButton.SetTextColor(RGB(255, 255, 255));
+	//deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteAllButton.SetTextColor(RGB(255, 255, 255));
 
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 
 	//Setting up the List
 	languagesList.InsertColumn(0, L"no_language", LVCFMT_CENTER, 80, -1);
@@ -70,6 +70,7 @@ void LanguagesView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(LanguagesView, CDialogEx)
 	ON_WM_ERASEBKGND()
+ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDC_DELETE_ALL, &LanguagesView::OnBnClickedDeleteAll)
 	ON_BN_CLICKED(IDC_DELETE_ONE, &LanguagesView::OnBnClickedDeleteOne)
 	ON_BN_CLICKED(IDC_EDIT, &LanguagesView::OnBnClickedEdit)
@@ -79,6 +80,19 @@ BEGIN_MESSAGE_MAP(LanguagesView, CDialogEx)
 	ON_EN_CHANGE(IDC_SEARCH_languages_FIELD, &LanguagesView::OnEnChangeSearchlanguagesField)
 	ON_EN_CHANGE(IDC_VILLAGE_NUMBER_FIELD_Language, &LanguagesView::OnEnChangeVillageNumberFieldActivity)
 END_MESSAGE_MAP()
+
+HBRUSH LanguagesView::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 BOOL LanguagesView::OnEraseBkgnd(CDC* pDC)
 {

@@ -53,6 +53,7 @@ void VillagesView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(VillagesView, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDC_ADD_VILLAGE, &VillagesView::OnBnClickedAddVillage)
 	ON_BN_CLICKED(IDC_EDIT_VILLAGE, &VillagesView::OnBnClickedEditVillage)
@@ -64,6 +65,19 @@ BEGIN_MESSAGE_MAP(VillagesView, CDialogEx)
 	ON_EN_CHANGE(IDC_VILLAGE_PAYS, &VillagesView::OnEnChangeVillagePays)
 	ON_EN_CHANGE(IDC_VILLAGE_PAYS_NUMBER, &VillagesView::OnEnChangeVillagePaysNumber)
 END_MESSAGE_MAP()
+
+HBRUSH VillagesView::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 BOOL VillagesView::OnEraseBkgnd(CDC* pDC)
 {
@@ -175,6 +189,17 @@ void VillagesView::OnBnClickedRemoveActivity()
 void VillagesView::OnBnClickedDeleteOneVillage()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_SEARCH_VILLAGE_FIELD, villageNumberValue);
+	if (villageNumberValue == "") {
+		OnOK();
+	}
+	CString deleteCommand3 = L"delete from parler where no_village= " + villageNumberValue;
+	CString deleteCommand2 = L"delete from proposer where no_village= " + villageNumberValue;
+	CString deleteCommand = L"delete from villages where no_village= " + villageNumberValue;
+	db->executeQuery(deleteCommand3);
+	db->executeQuery(deleteCommand2);
+	db->executeQuery(deleteCommand);
+	OnBnClickedRefresh();
 }
 
 

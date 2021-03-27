@@ -32,10 +32,24 @@ void ContinentCreate::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ContinentCreate, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDC_ACTIVITY_CREATE, &ContinentCreate::OnBnClickedActivityCreate)
 	ON_BN_CLICKED(IDC_ACTIVITY_CANCEL, &ContinentCreate::OnBnClickedActivityCancel)
 END_MESSAGE_MAP()
+
+HBRUSH ContinentCreate::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 
 BOOL ContinentCreate::OnEraseBkgnd(CDC* pDC)

@@ -39,7 +39,8 @@ public:
 	CMFCButton deleteOneButton;
 	CMFCButton deleteAllButton;
 	afx_msg
-		BOOL OnEraseBkgnd(CDC* pDC);
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnEraseBkgnd(CDC* pDC);
 	void retrieveData(CString q);
 	void onSearch();
 	void OnBnClickedAddVillage();

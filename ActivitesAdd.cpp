@@ -32,12 +32,26 @@ void ActivitesAdd::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ActivitesAdd, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 
 	ON_BN_CLICKED(IDC_ACTIVITY_CREATE, &ActivitesAdd::OnBnClickedActivityCreate)
 	ON_BN_CLICKED(IDC_ACTIVITY_CANCEL, &ActivitesAdd::OnBnClickedActivityCancel)
 END_MESSAGE_MAP()
 
+
+HBRUSH ActivitesAdd::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 // ActivitesAdd message handlers
 

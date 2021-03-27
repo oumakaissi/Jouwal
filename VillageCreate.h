@@ -21,7 +21,9 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedCreate();
+	afx_msg
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	void OnBnClickedCreate();
 	afx_msg void OnBnClickedCancel();
 	CString villageNameValue;
 	CString countryNumberValue;

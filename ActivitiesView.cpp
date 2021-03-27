@@ -27,21 +27,22 @@ ActivitiesView::ActivitiesView(CWnd* pParent /*=nullptr*/)
 }
 BOOL ActivitiesView::OnInitDialog() {
 	CDialogEx::OnInitDialog();
-	// Coloring the buttons
-	searchButton.SetFaceColor(RGB(80, 40, 80), true);
-	searchButton.SetTextColor(RGB(255, 255, 255));
+	// Coloring the text
+	// Coloring the buttonsc
+	//searchButton.SetFaceColor(RGB(80, 40, 80), true);
+	//searchButton.SetTextColor(RGB(255, 255, 255));
 
-	addButton.SetFaceColor(RGB(80, 40, 80), true);
-	addButton.SetTextColor(RGB(255, 255, 255));
+	//addButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteOneButton.SetTextColor(RGB(255, 255, 255));
+	//deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteOneButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteAllButton.SetTextColor(RGB(255, 255, 255));
+	//deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteAllButton.SetTextColor(RGB(255, 255, 255));
 
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 
 	//Setting up the List
 	activitiesList.InsertColumn(0, L"no_activity", LVCFMT_CENTER, 80, -1);
@@ -106,6 +107,8 @@ void ActivitiesView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ActivitiesView, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
+
 
 	ON_BN_CLICKED(IDC_ADD_ACTIVITIE, &ActivitiesView::OnBnClickedAddActivitie)
 	ON_BN_CLICKED(IDC_EDIT_ACTIVITIE, &ActivitiesView::OnBnClickedEditActivitie)
@@ -117,6 +120,18 @@ BEGIN_MESSAGE_MAP(ActivitiesView, CDialogEx)
 	ON_EN_CHANGE(IDC_VILLAGE_NUMBER_FIELD_ACTIVITY, &ActivitiesView::OnEnChangeVillageNumberFieldActivity)
 END_MESSAGE_MAP()
 
+HBRUSH ActivitiesView::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255,255,255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 BOOL ActivitiesView::OnEraseBkgnd(CDC* pDC)
 {

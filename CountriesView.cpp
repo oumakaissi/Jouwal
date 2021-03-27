@@ -28,20 +28,20 @@ CountriesView::~CountriesView()
 BOOL CountriesView::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 	// Coloring the buttons
-	searchButton.SetFaceColor(RGB(80, 40, 80), true);
-	searchButton.SetTextColor(RGB(255, 255, 255));
+	//searchButton.SetFaceColor(RGB(80, 40, 80), true);
+	//searchButton.SetTextColor(RGB(255, 255, 255));
 
-	addButton.SetFaceColor(RGB(80, 40, 80), true);
-	addButton.SetTextColor(RGB(255, 255, 255));
+	//addButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteOneButton.SetTextColor(RGB(255, 255, 255));
+	//deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteOneButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteAllButton.SetTextColor(RGB(255, 255, 255));
+	//deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteAllButton.SetTextColor(RGB(255, 255, 255));
 
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 
 	//Setting up the List
 	countriesList.InsertColumn(0, L"no_country", LVCFMT_CENTER, 80, -1);
@@ -102,6 +102,7 @@ void CountriesView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CountriesView, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_EN_CHANGE(IDC_SEARCH_Countries_FIELD, &CountriesView::OnEnChangeSearchCountriesField)
 	ON_BN_CLICKED(IDC_SEARCH_Countries_BUTTON, &CountriesView::OnBnClickedSearchCountriesButton)
@@ -112,6 +113,20 @@ BEGIN_MESSAGE_MAP(CountriesView, CDialogEx)
 	ON_BN_CLICKED(IDC_REFRESH, &CountriesView::OnBnClickedRefresh)
 	ON_EN_CHANGE(IDC_SEARCH_Countries__Continent_FIELD, &CountriesView::OnEnChangeSearchCountries)
 END_MESSAGE_MAP()
+
+
+HBRUSH CountriesView::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 
 BOOL CountriesView::OnEraseBkgnd(CDC* pDC)
@@ -163,6 +178,7 @@ void CountriesView::OnBnClickedEditCountry()
 void CountriesView::OnBnClickedDeleteOneActivitie()
 {
 	// TODO: Add your control notification handler code here
+
 }
 
 
@@ -170,7 +186,7 @@ void CountriesView::OnBnClickedDeleteAllActivities()
 {
 	// TODO: Add your control notification handler code here
 	CString deleteAllCommand = L"TRUNCATE table countries";
-	//db->executeQuery(deleteAllCommand);
+	db->executeQuery(deleteAllCommand);
 }
 
 

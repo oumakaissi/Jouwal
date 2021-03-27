@@ -33,10 +33,24 @@ void VillageDelete::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(VillageDelete, CDialogEx)
+ON_WM_CTLCOLOR()
 	ON_BN_CLICKED(IDO_VILLAGE_DELETE, &VillageDelete::OnBnClickedVillageDelete)
 	ON_BN_CLICKED(IDCANCEL, &VillageDelete::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
+
+HBRUSH VillageDelete::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 // VillageDelete message handlers
 

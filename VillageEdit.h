@@ -30,7 +30,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg
-		BOOL OnEraseBkgnd(CDC* pDC);
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnEraseBkgnd(CDC* pDC);
 	void OnBnClickedCancel();
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedMfcbutton4();
@@ -66,4 +67,5 @@ public:
 	CRecordset* recset;
 
 	
+	afx_msg void OnEnChangeActivityNumberField();
 };

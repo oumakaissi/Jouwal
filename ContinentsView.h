@@ -37,6 +37,7 @@ public:
 	afx_msg void OnBnClickedDeleteAllActivities();
 	void OnSearchChange();
 	void retrieveData(CString q);
+	HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	BOOL OnEraseBkgnd(CDC* pDC);
 	CMFCButton searchButton;
 	CMFCButton refreshButton;

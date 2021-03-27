@@ -34,11 +34,25 @@ void CountryCreate::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CountryCreate, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDC_ACTIVITY_CREATE, &CountryCreate::OnBnClickedActivityCreate)
 	ON_BN_CLICKED(IDC_ACTIVITY_CANCEL, &CountryCreate::OnBnClickedActivityCancel)
 END_MESSAGE_MAP()
 
+
+HBRUSH CountryCreate::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 BOOL CountryCreate::OnEraseBkgnd(CDC* pDC)
 {

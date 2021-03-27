@@ -29,20 +29,20 @@ VillageEdit::~VillageEdit()
 BOOL VillageEdit::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 	// Coloring the buttons
-	addLanguageButton.SetFaceColor(RGB(80, 40, 80), true);
-	addLanguageButton.SetTextColor(RGB(255, 255, 255));
+	//addLanguageButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addLanguageButton.SetTextColor(RGB(255, 255, 255));
 
-	removeLanguageButton.SetFaceColor(RGB(80, 40, 80), true);
-	removeLanguageButton.SetTextColor(RGB(255, 255, 255));
+	//removeLanguageButton.SetFaceColor(RGB(80, 40, 80), true);
+	//removeLanguageButton.SetTextColor(RGB(255, 255, 255));
 
-	addActivityButton.SetFaceColor(RGB(80, 40, 80), true);
-	addActivityButton.SetTextColor(RGB(255, 255, 255));
+	//addActivityButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addActivityButton.SetTextColor(RGB(255, 255, 255));
 
-	removeActivityButton.SetFaceColor(RGB(80, 40, 80), true);
-	removeActivityButton.SetTextColor(RGB(255, 255, 255));
+	//removeActivityButton.SetFaceColor(RGB(80, 40, 80), true);
+	//removeActivityButton.SetTextColor(RGB(255, 255, 255));
 
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 
 	//Setting up the List
 	activitiesList.InsertColumn(0, L"no_activity", LVCFMT_CENTER, 80, -1);
@@ -72,6 +72,12 @@ void VillageEdit::retrieveVillages(CString q) {
 		CString field2 = L"";
 		recset->GetFieldValue(L"no_country", field2);
 		villageCountryNumberControl.SetWindowTextW(field2);
+	}
+	else {
+		villageNameControl.SetWindowTextW(L"");
+
+		villageCountryNumberControl.SetWindowTextW(L"");
+
 	}
 
 	recset->Close();
@@ -158,6 +164,7 @@ void VillageEdit::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(VillageEdit, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDCANCEL, &VillageEdit::OnBnClickedCancel)
 	ON_BN_CLICKED(IDOK, &VillageEdit::OnBnClickedOk)
@@ -167,7 +174,21 @@ BEGIN_MESSAGE_MAP(VillageEdit, CDialogEx)
 	ON_BN_CLICKED(IDC_remove_Language_from_village, &VillageEdit::OnBnClickedremoveLanguagefromvillage)
 	ON_BN_CLICKED(IDC_add_aactivity_to_village_button, &VillageEdit::OnBnClickedaddaactivitytovillagebutton)
 	ON_BN_CLICKED(IDC_remove_activity_from_village, &VillageEdit::OnBnClickedremoveactivityfromvillage)
+	ON_EN_CHANGE(IDC_ACTIVITY_NUMBER_FIELD, &VillageEdit::OnEnChangeActivityNumberField)
 END_MESSAGE_MAP()
+
+HBRUSH VillageEdit::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
 
 
 BOOL VillageEdit::OnEraseBkgnd(CDC* pDC)
@@ -224,6 +245,16 @@ void VillageEdit::OnBnClickedMfcbutton3()
 void VillageEdit::OnBnClickedVillageEditButton()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_VILLAGE_NUMBER_FIELD, villageNumberValue);
+	GetDlgItemText(IDC_VILLAGE_NAME_FIELD, villageNameValue);
+	GetDlgItemText(IDC_VILLAGE_COUNTRY_NUMBER_FIELD, countryNumberValue);
+	if (villageNumberValue == L"" || villageNameValue == L""|| countryNumberValue == L"") {
+		return;
+	}
+	CString updateCommand = L"UPDATE villages SET nom = '" + villageNameValue + "' WHERE no_village = " + villageNumberValue;
+	CString updateCommand2 = L"UPDATE villages SET no_country = '" + countryNumberValue + "' WHERE no_village = " + villageNumberValue;
+	db->executeQuery(updateCommand);
+	db->executeQuery(updateCommand2);
 }
 
 
@@ -278,22 +309,70 @@ void VillageEdit::OnEnChangeVillageNumberField()
 void VillageEdit::OnBnClickedaddlanguagetovillage()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_VILLAGE_NUMBER_FIELD, villageNumberValue);
+	GetDlgItemText(IDC_LANGUAGE_NUMBER_FIELD, languageNumberValue);
+	if (villageNumberValue == L""||languageNumberValue == L"") {
+		return;
+	}
+	CString insertSQL = L"INSERT INTO parler(no_village, no_language) VALUES (" + villageNumberValue + ", "+ languageNumberValue +");";
+	DbConnector* db = DbConnector::createDb();
+	db->executeQuery(insertSQL);
+	OnEnChangeVillageNumberField();
 }
 
 
 void VillageEdit::OnBnClickedremoveLanguagefromvillage()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_VILLAGE_NUMBER_FIELD, villageNumberValue);
+	GetDlgItemText(IDC_LANGUAGE_NUMBER_FIELD, languageNumberValue);
+
+	if (villageNumberValue == L"" || languageNumberValue == L"") {
+		return;
+	}
+	CString deleteCommand = L"delete from parler where no_village = " + villageNumberValue + " and no_language = " + languageNumberValue;
+	db->executeQuery(deleteCommand);
+	OnEnChangeVillageNumberField();
 }
 
 
 void VillageEdit::OnBnClickedaddaactivitytovillagebutton()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_GRATUITE_FIELD, activityGratuiteValue);
+	GetDlgItemText(IDC_ACTIVITY_NUMBER_FIELD, activityNumberValue);
+	GetDlgItemText(IDC_VILLAGE_NUMBER_FIELD, villageNumberValue);
+	if (villageNumberValue == L"" || activityGratuiteValue == L"" || activityNumberValue==L"") {
+		return;
+	}
+
+	CString insertSQL = L"INSERT INTO proposer(no_village, no_activities, gratuite) VALUES (" + villageNumberValue + ", "+ activityNumberValue +","+ activityGratuiteValue +");";
+	DbConnector* db = DbConnector::createDb();
+	db->executeQuery(insertSQL);
+	OnEnChangeVillageNumberField();
 }
 
 
 void VillageEdit::OnBnClickedremoveactivityfromvillage()
 {
 	// TODO: Add your control notification handler code here
+	GetDlgItemText(IDC_ACTIVITY_NUMBER_FIELD, activityNumberValue);
+	GetDlgItemText(IDC_VILLAGE_NUMBER_FIELD, villageNumberValue);
+	if (villageNumberValue == L"" || activityNumberValue == L"") {
+		return;
+	}
+	CString deleteCommand = L"delete from proposer where no_activities = " + activityNumberValue + " and no_village = "+villageNumberValue;
+	db->executeQuery(deleteCommand);
+	OnEnChangeVillageNumberField();
+}
+
+
+void VillageEdit::OnEnChangeActivityNumberField()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
 }

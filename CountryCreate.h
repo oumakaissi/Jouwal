@@ -23,7 +23,8 @@ protected:
 public:
 	CString countryNomValue;
 	afx_msg
-		BOOL OnEraseBkgnd(CDC* pDC);
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnEraseBkgnd(CDC* pDC);
 	void OnBnClickedActivityCreate();
 	afx_msg void OnBnClickedActivityCancel();
 	CString continentNumberFieldValue;

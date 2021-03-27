@@ -27,20 +27,20 @@ ContinentsView::~ContinentsView()
 BOOL ContinentsView::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 	// Coloring the buttons
-	searchButton.SetFaceColor(RGB(80, 40, 80), true);
-	searchButton.SetTextColor(RGB(255, 255, 255));
+	//searchButton.SetFaceColor(RGB(80, 40, 80), true);
+	//searchButton.SetTextColor(RGB(255, 255, 255));
 
-	addButton.SetFaceColor(RGB(80, 40, 80), true);
-	addButton.SetTextColor(RGB(255, 255, 255));
+	//addButton.SetFaceColor(RGB(80, 40, 80), true);
+	//addButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteOneButton.SetTextColor(RGB(255, 255, 255));
+	//deleteOneButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteOneButton.SetTextColor(RGB(255, 255, 255));
 
-	deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteAllButton.SetTextColor(RGB(255, 255, 255));
+	//deleteAllButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteAllButton.SetTextColor(RGB(255, 255, 255));
 
-	editButton.SetFaceColor(RGB(80, 40, 80), true);
-	editButton.SetTextColor(RGB(255, 255, 255));
+	//editButton.SetFaceColor(RGB(80, 40, 80), true);
+	//editButton.SetTextColor(RGB(255, 255, 255));
 
 	//Setting up the List
 	continentsList.InsertColumn(0, L"no_continent", LVCFMT_CENTER, 80, -1);
@@ -68,6 +68,7 @@ void ContinentsView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ContinentsView, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_EN_CHANGE(IDC_SEARCH_Continent_FIELD, &ContinentsView::OnEnChangeSearchContinentField)
 	ON_BN_CLICKED(IDC_SEARCH_Contienents_BUTTON, &ContinentsView::OnBnClickedSearchContienentsButton)
@@ -77,6 +78,21 @@ BEGIN_MESSAGE_MAP(ContinentsView, CDialogEx)
 	ON_BN_CLICKED(IDC_DELETE_ONE_ACTIVITIE, &ContinentsView::OnBnClickedDeleteOneActivitie)
 	ON_BN_CLICKED(IDC_DELETE_ALL_ACTIVITIES, &ContinentsView::OnBnClickedDeleteAllActivities)
 END_MESSAGE_MAP()
+
+
+HBRUSH ContinentsView::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
+
 
 BOOL ContinentsView::OnEraseBkgnd(CDC* pDC)
 {

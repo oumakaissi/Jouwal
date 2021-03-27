@@ -33,17 +33,33 @@ void ActivityDelete::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(ActivityDelete, CDialogEx)
 	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 
 	ON_BN_CLICKED(IDO_ACTIVITY_DELETE_BUTTON, &ActivityDelete::OnBnClickedActivityDeleteButton)
 END_MESSAGE_MAP()
 
+
+HBRUSH ActivityDelete::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	switch (nCtlColor)
+	{
+	case CTLCOLOR_STATIC:
+		pDC->SetBkColor(RGB(41, 8, 31));
+		pDC->SetTextColor(RGB(255, 255, 255));
+		return (HBRUSH)GetStockObject(NULL_BRUSH);
+	default:
+		return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+}
+
+
 BOOL ActivityDelete::OnInitDialog() {
 	CDialog::OnInitDialog();
-	deleteButton.SetFaceColor(RGB(80, 40, 80), true);
-	deleteButton.SetTextColor(RGB(255, 255, 255));
+	//deleteButton.SetFaceColor(RGB(80, 40, 80), true);
+	//deleteButton.SetTextColor(RGB(255, 255, 255));
 
-	cancelButton.SetFaceColor(RGB(80, 40, 80), true);
-	cancelButton.SetTextColor(RGB(255, 255, 255));
+	//cancelButton.SetFaceColor(RGB(80, 40, 80), true);
+	//cancelButton.SetTextColor(RGB(255, 255, 255));
 	return TRUE;
 }
 

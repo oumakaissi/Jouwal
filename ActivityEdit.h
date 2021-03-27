@@ -24,7 +24,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg
-		BOOL OnInitDialog();
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnInitDialog();
 	BOOL OnEraseBkgnd(CDC* pDC);
 	void OnBnClickedEditActivityButton();
 	afx_msg void OnBnClickedCancel();

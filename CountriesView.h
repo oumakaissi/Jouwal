@@ -35,7 +35,8 @@ public:
 	CEdit countriesFieldControl;
 	CString countiresFieldValue;
 	afx_msg
-		BOOL OnEraseBkgnd(CDC* pDC);
+		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnEraseBkgnd(CDC* pDC);
 	void OnEnChangeSearchCountriesField();
 	afx_msg void OnBnClickedSearchCountriesButton();
 	afx_msg void OnBnClickedAddCountry();
