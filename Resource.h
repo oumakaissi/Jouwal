@@ -34,9 +34,23 @@
 #define IDD_LANGUAGES_View              180
 #define IDD_Language_Create             181
 #define IDD_Countries_View              182
+#define IDI_ICON7                       182
 #define IDD_Country_Create              183
+#define IDI_ICON8                       183
 #define IDD_Continent_View              184
+#define IDI_ICON9                       184
 #define IDD_Continent_Create            185
+#define IDI_ICON10                      185
+#define IDI_ICON11                      186
+#define IDI_ICON12                      187
+#define IDI_ICON13                      188
+#define IDI_ICON14                      189
+#define IDI_ICON15                      190
+#define IDI_ICON16                      191
+#define IDI_ICON17                      192
+#define IDI_ICON18                      193
+#define IDI_ICON19                      194
+#define IDI_ICON20                      195
 #define IDC_BUTTON2                     1009
 #define IDC_BUTTON3                     1010
 #define IDC_Activities                  1012
@@ -157,7 +171,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        182
+#define _APS_NEXT_RESOURCE_VALUE        196
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1113
 #define _APS_NEXT_SYMED_VALUE           101

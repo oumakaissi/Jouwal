@@ -74,7 +74,8 @@ void ActivitesAdd::OnBnClickedActivityCreate()
 {
 	// TODO: Add your control notification handler code here
 	GetDlgItemText(IDC_DESIGNATION_FIELD, designationField);
-	CString insertSQL = L"INSERT INTO ACTIVITIES(designation) VALUES ('" + designationField + "');";
+
+	CString insertSQL = L"INSERT INTO activities (designation) VALUES ('" + designationField + "')";
 	DbConnector* db = DbConnector::createDb();
 	db->executeQuery(insertSQL);
 	OnOK();

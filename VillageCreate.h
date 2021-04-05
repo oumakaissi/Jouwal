@@ -23,6 +23,7 @@ protected:
 public:
 	afx_msg
 		HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	BOOL OnEraseBkgnd(CDC* pDC);
 	void OnBnClickedCreate();
 	afx_msg void OnBnClickedCancel();
 	CString villageNameValue;

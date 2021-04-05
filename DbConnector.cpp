@@ -13,6 +13,7 @@ DbConnector* DbConnector::createDb() {
 DbConnector::DbConnector() {
 	sDriver = L"Microsoft Access Driver (*.mdb)";
 	sFile = L"C:\\Users\\tahab\\Documents\\Jouwal2.mdb";
+	//sFile = L"C:\\Jouwal2.mdb";
 	sDsn.Format(L"ODBC;DRIVER={%s};DSN='';DBQ=%s", sDriver, sFile);
 	TRY{
 		database.Open(NULL,false,false,sDsn);

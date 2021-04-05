@@ -33,9 +33,11 @@ void VillageCreate::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(VillageCreate, CDialogEx)
+	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
+
 	ON_BN_CLICKED(IDO_CREATE, &VillageCreate::OnBnClickedCreate)
 	ON_BN_CLICKED(IDCANCEL, &VillageCreate::OnBnClickedCancel)
-ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 HBRUSH VillageCreate::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
@@ -51,6 +53,16 @@ HBRUSH VillageCreate::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 }
 
+BOOL VillageCreate::OnEraseBkgnd(CDC* pDC)
+{
+	CRect rect;
+	GetClientRect(&rect);
+	CBrush myBrush(RGB(41, 8, 31));    // dialog background color
+	CBrush* pOld = pDC->SelectObject(&myBrush);
+	BOOL bRes = pDC->PatBlt(0, 0, rect.Width(), rect.Height(), PATCOPY);
+	pDC->SelectObject(pOld);    // restore old brush
+	return bRes;                       // CDialog::OnEraseBkgnd(pDC);
+}
 
 // VillageCreate message handlers
 
